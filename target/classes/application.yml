@@ -1,7 +1,7 @@
 server:
-  port: 9080
+  port: 9097
   servlet:
-    context-path: /npho
+    context-path: /ictc
 spring:
    jpa:
       database-platform: org.hibernate.dialect.PostgreSQLDialect

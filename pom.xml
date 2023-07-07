@@ -13,12 +13,9 @@
 	<maven.dependency.version>3.0.2</maven.dependency.version>
 	</properties>
 	  <groupId>soch.naco.gov</groupId>
-	  <artifactId>nphoapis</artifactId>
+	  <artifactId>sochIctc</artifactId>
 	  <packaging>war</packaging>
-	  <name>soch-npho-microservices</name>
-	  
-	  
-	  
+	  <name>soch-ictc-microservices</name>
 	  
 	  <dependencies>  
 	  <dependency>
@@ -94,7 +91,7 @@
 			</dependency>     
 		</dependencies>
 		<build>
-		<finalName>npho</finalName>
+		<finalName>ictc</finalName>
 			<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
