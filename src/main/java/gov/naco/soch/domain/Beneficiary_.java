@@ -1,0 +1,111 @@
+package gov.naco.soch.domain;
+
+import java.time.LocalDate;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
+@StaticMetamodel(Beneficiary.class)
+public abstract class Beneficiary_ extends gov.naco.soch.domain.Auditable_ {
+
+	public static volatile SingularAttribute<Beneficiary, Boolean> isSerodiscordant;
+	public static volatile SingularAttribute<Beneficiary, String> lastName;
+	public static volatile SingularAttribute<Beneficiary, String> neoNatalComplications;
+	public static volatile SingularAttribute<Beneficiary, String> caregiverPhoneNumber;
+	public static volatile SingularAttribute<Beneficiary, String> mobileNumber;
+	public static volatile SingularAttribute<Beneficiary, TIBeneficiary> tiBeneficiary;
+	public static volatile SingularAttribute<Beneficiary, String> artNumber;
+	public static volatile SingularAttribute<Beneficiary, Boolean> isLivingInRelationship;
+	public static volatile SingularAttribute<Beneficiary, LocalDate> regDate;
+	public static volatile SingularAttribute<Beneficiary, String> pid;
+	public static volatile SingularAttribute<Beneficiary, Boolean> isActive;
+	public static volatile SingularAttribute<Beneficiary, ICTCBeneficiary> ictcBeneficiary;
+	public static volatile SingularAttribute<Beneficiary, String> ostCode;
+	public static volatile SingularAttribute<Beneficiary, Integer> monthlyIncomeId;
+	public static volatile SingularAttribute<Beneficiary, String> uid;
+	public static volatile SingularAttribute<Beneficiary, Integer> birthHistoryId;
+	public static volatile SingularAttribute<Beneficiary, Integer> occupationId;
+	public static volatile SingularAttribute<Beneficiary, Integer> caregiverAddressId;
+	public static volatile SingularAttribute<Beneficiary, Integer> hivTypeId;
+	public static volatile SingularAttribute<Beneficiary, LocalDate> deathDate;
+	public static volatile SingularAttribute<Beneficiary, FictcBeneficiary> fictcBeneficiary;
+	public static volatile SingularAttribute<Beneficiary, String> bankAccountNumber;
+	public static volatile SingularAttribute<Beneficiary, String> ostNumber;
+	public static volatile SingularAttribute<Beneficiary, Long> id;
+	public static volatile SingularAttribute<Beneficiary, String> tiCode;
+	public static volatile SingularAttribute<Beneficiary, Integer> educationLevelId;
+	public static volatile SingularAttribute<Beneficiary, String> deathReason;
+	public static volatile SingularAttribute<Beneficiary, String> bankAccountName;
+	public static volatile SingularAttribute<Beneficiary, String> bankIfsc;
+	public static volatile SingularAttribute<Beneficiary, Address> address;
+	public static volatile SingularAttribute<Beneficiary, Integer> hivStatusId;
+	public static volatile SingularAttribute<Beneficiary, Boolean> isDelete;
+	public static volatile SingularAttribute<Beneficiary, String> otherEmploymentStatus;
+	public static volatile SingularAttribute<Beneficiary, Integer> genderId;
+	public static volatile SingularAttribute<Beneficiary, String> preArtNumber;
+	public static volatile SingularAttribute<Beneficiary, LocalDate> dateOfBirth;
+	public static volatile SingularAttribute<Beneficiary, String> alternatePhonenumber;
+	public static volatile SingularAttribute<Beneficiary, Integer> stayingWithId;
+	public static volatile SingularAttribute<Beneficiary, String> caregiverName;
+	public static volatile SingularAttribute<Beneficiary, String> firstName;
+	public static volatile SingularAttribute<Beneficiary, Integer> maritalStatusId;
+	public static volatile SingularAttribute<Beneficiary, String> aadharNumber;
+	public static volatile SingularAttribute<Beneficiary, Integer> masterClientStatus;
+	public static volatile SingularAttribute<Beneficiary, String> middleName;
+	public static volatile SingularAttribute<Beneficiary, Integer> birthWeight;
+	public static volatile SingularAttribute<Beneficiary, String> age;
+	public static volatile SingularAttribute<Beneficiary, Integer> guardianCaregiverHighestEducationId;
+	public static volatile SingularAttribute<Beneficiary, Integer> categoryId;
+
+	public static final String IS_SERODISCORDANT = "isSerodiscordant";
+	public static final String LAST_NAME = "lastName";
+	public static final String NEO_NATAL_COMPLICATIONS = "neoNatalComplications";
+	public static final String CAREGIVER_PHONE_NUMBER = "caregiverPhoneNumber";
+	public static final String MOBILE_NUMBER = "mobileNumber";
+	public static final String TI_BENEFICIARY = "tiBeneficiary";
+	public static final String ART_NUMBER = "artNumber";
+	public static final String IS_LIVING_IN_RELATIONSHIP = "isLivingInRelationship";
+	public static final String REG_DATE = "regDate";
+	public static final String PID = "pid";
+	public static final String IS_ACTIVE = "isActive";
+	public static final String ICTC_BENEFICIARY = "ictcBeneficiary";
+	public static final String OST_CODE = "ostCode";
+	public static final String MONTHLY_INCOME_ID = "monthlyIncomeId";
+	public static final String UID = "uid";
+	public static final String BIRTH_HISTORY_ID = "birthHistoryId";
+	public static final String OCCUPATION_ID = "occupationId";
+	public static final String CAREGIVER_ADDRESS_ID = "caregiverAddressId";
+	public static final String HIV_TYPE_ID = "hivTypeId";
+	public static final String DEATH_DATE = "deathDate";
+	public static final String FICTC_BENEFICIARY = "fictcBeneficiary";
+	public static final String BANK_ACCOUNT_NUMBER = "bankAccountNumber";
+	public static final String OST_NUMBER = "ostNumber";
+	public static final String ID = "id";
+	public static final String TI_CODE = "tiCode";
+	public static final String EDUCATION_LEVEL_ID = "educationLevelId";
+	public static final String DEATH_REASON = "deathReason";
+	public static final String BANK_ACCOUNT_NAME = "bankAccountName";
+	public static final String BANK_IFSC = "bankIfsc";
+	public static final String ADDRESS = "address";
+	public static final String HIV_STATUS_ID = "hivStatusId";
+	public static final String IS_DELETE = "isDelete";
+	public static final String OTHER_EMPLOYMENT_STATUS = "otherEmploymentStatus";
+	public static final String GENDER_ID = "genderId";
+	public static final String PRE_ART_NUMBER = "preArtNumber";
+	public static final String DATE_OF_BIRTH = "dateOfBirth";
+	public static final String ALTERNATE_PHONENUMBER = "alternatePhonenumber";
+	public static final String STAYING_WITH_ID = "stayingWithId";
+	public static final String CAREGIVER_NAME = "caregiverName";
+	public static final String FIRST_NAME = "firstName";
+	public static final String MARITAL_STATUS_ID = "maritalStatusId";
+	public static final String AADHAR_NUMBER = "aadharNumber";
+	public static final String MASTER_CLIENT_STATUS = "masterClientStatus";
+	public static final String MIDDLE_NAME = "middleName";
+	public static final String BIRTH_WEIGHT = "birthWeight";
+	public static final String AGE = "age";
+	public static final String GUARDIAN_CAREGIVER_HIGHEST_EDUCATION_ID = "guardianCaregiverHighestEducationId";
+	public static final String CATEGORY_ID = "categoryId";
+
+}
+
