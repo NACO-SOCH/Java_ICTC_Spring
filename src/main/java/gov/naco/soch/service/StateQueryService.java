@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 // for static metamodels
 import gov.naco.soch.domain.State;
-import gov.naco.soch.domain.State_;
 import gov.naco.soch.repository.StateRepository;
 import gov.naco.soch.service.dto.StateCriteria;
 import gov.naco.soch.service.dto.StateDTO;
@@ -86,13 +85,16 @@ public class StateQueryService  {
         Specification<State> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), State_.id));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
             }
             if (criteria.getAlternateName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getAlternateName(), State_.alternateName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("alternateName"), criteria.getAlternateName()));
             }
             if (criteria.getName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getName(), State_.name));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("name"), criteria.getName()));
             }
         }
         return specification;

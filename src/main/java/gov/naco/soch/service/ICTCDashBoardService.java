@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import gov.naco.soch.constant.ICTCDashBoardConstant;
 import gov.naco.soch.projection.InventoryProjection;
 import gov.naco.soch.projection.StatisticsProjection;
@@ -774,7 +775,11 @@ public class ICTCDashBoardService {
 				Object[] summaryItemList = (Object[]) summaryDataObject;
 				for (int i = 0; i < summaryItemList.length; i++) {
 					String componentFilterJson = ICTCDashBoardConstant.CHART_COMPONENT_FILTER_MAP.get(i);
-					JsonObject jsonObjectForFilterComponent =  JSONParser.parseString(componentFilterJson)
+					
+					JsonParser jsonParser = new JsonParser();
+					
+					
+					JsonObject jsonObjectForFilterComponent =  jsonParser.parse(componentFilterJson)
 							.getAsJsonObject();
 					int componentId = jsonObjectForFilterComponent.get("chartId").getAsInt();
 					String componentJson = ICTCDashBoardConstant.CHART_COMPONENT_MAP.get(componentId);
@@ -782,7 +787,7 @@ public class ICTCDashBoardService {
 						DashBoardSummaryDTO summaryDTO = new DashBoardSummaryDTO();
 						int index = getMatchIndex(dashBoardSummaryDTOs, componentId);
 						if (index == -1) {
-							JsonObject jsonObjectForComponent = JsonParser.parseString(componentJson).getAsJsonObject();
+							JsonObject jsonObjectForComponent = jsonParser.parse(componentJson).getAsJsonObject();
 							summaryDTO.setId(componentId);
 							summaryDTO.setName(jsonObjectForComponent.get("name").getAsString());
 							summaryDTO.setTitle(jsonObjectForComponent.get("title").getAsString());
@@ -805,7 +810,7 @@ public class ICTCDashBoardService {
 						} else {
 							if (dashBoardSummaryDTOs.get(index) != null) {
 								if (!componentFilterJson.isEmpty()) {
-									JsonObject jsonObjectForFilter = JsonParser.parseString(componentFilterJson)
+									JsonObject jsonObjectForFilter = jsonParser.parse(componentFilterJson)
 											.getAsJsonObject();
 									DashBoardFilterDTO filterDTO = new DashBoardFilterDTO();
 									filterDTO.setName(jsonObjectForFilter.get("name").getAsString());

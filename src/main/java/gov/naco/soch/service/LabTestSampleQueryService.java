@@ -2,8 +2,6 @@ package gov.naco.soch.service;
 
 import java.util.List;
 
-import javax.persistence.criteria.JoinType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -12,11 +10,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import gov.naco.soch.domain.Beneficiary_;
-import gov.naco.soch.domain.Facility_;
 import gov.naco.soch.domain.LabTestSample;
-import gov.naco.soch.domain.LabTestSampleBatch_;
-import gov.naco.soch.domain.LabTestSample_;
 import gov.naco.soch.repository.LabTestSampleRepository;
 import gov.naco.soch.service.dto.ICTCSampleCollectionCriteria;
 import gov.naco.soch.service.dto.ICTCTestResultDTO;
@@ -146,72 +140,60 @@ public class LabTestSampleQueryService {
 	 *                 should match.
 	 * @return the matching {@link Specification} of the entity.
 	 */
-	protected Specification<LabTestSample> createSpecification(LabTestSampleCriteria criteria) {
-		Specification<LabTestSample> specification = Specification.where(null);
-		if (criteria != null) {
-			if (criteria.getId() != null) {
-				specification = specification.and(buildRangeSpecification(criteria.getId(), LabTestSample_.id));
-			}
-			if (criteria.getBarcodeNumber() != null) {
-				specification = specification
-						.and(buildStringSpecification(criteria.getBarcodeNumber(), LabTestSample_.barcodeNumber));
-			}
-			if (criteria.getIsDelete() != null) {
-				specification = specification.and(buildSpecification(criteria.getIsDelete(), LabTestSample_.isDelete));
-			}
-			if (criteria.getTestMachineTypeId() != null) {
-				specification = specification
-						.and(buildRangeSpecification(criteria.getTestMachineTypeId(), LabTestSample_.testMachineTypeId));
-			}
-			if (criteria.getTestTypeId() != null) {
-				specification = specification
-						.and(buildRangeSpecification(criteria.getTestTypeId(), LabTestSample_.testTypeId));
-			}
-			if (criteria.getBeneficiaryId() != null) {
-				specification = specification.and(buildSpecification(criteria.getBeneficiaryId(),
-						root -> root.join(LabTestSample_.beneficiary, JoinType.LEFT).get(Beneficiary_.id)));
-			}
-			if (criteria.getBatchId() != null) {
-				specification = specification.and(buildSpecification(criteria.getBatchId(),
-						root -> root.join(LabTestSample_.batch, JoinType.LEFT).get(LabTestSampleBatch_.id)));
-			}
-			if (criteria.getTestMachineId() != null) {
-				specification = specification
-						.and(buildRangeSpecification(criteria.getTestMachineId(), LabTestSample_.testMachineId));
-			}
-			if (criteria.getResultTypeId() != null) {
-				specification = specification
-						.and(buildRangeSpecification(criteria.getResultTypeId(), LabTestSample_.resultTypeId));
-			}
-			if (criteria.getMasterResultStatus() != null) {
-				specification = specification
-						.and(buildRangeSpecification(criteria.getMasterResultStatus(), LabTestSample_.masterResultStatus));
-			}
-			if (criteria.getLabId() != null) {
-				specification = specification.and(buildSpecification(criteria.getLabId(),
-						root -> root.join(LabTestSample_.lab, JoinType.LEFT).get(Facility_.id)));
-			}
-			if (criteria.getFacilityId() != null) {
-				specification = specification.and(buildSpecification(criteria.getFacilityId(),
-						root -> root.join(LabTestSample_.facility, JoinType.LEFT).get(Facility_.id)));
-			}
-//			if (criteria.getHivStatus() != null) {
-//				specification = specification
-//						.and(buildRangeSpecification(criteria.getHivStatus(), LabTestSample_.hivStatus));
-//			}
-//			if (criteria.getHivType() != null) {
-//				specification = specification
-//						.and(buildRangeSpecification(criteria.getHivType(), LabTestSample_.hivType));
-//			}
-//			if (criteria.getVisitId() != null) {
-//				specification = specification.and(buildSpecification(criteria.getVisitId(),
-//						root -> root.join(LabTestSample_.visit, JoinType.LEFT).get(ICTCVisit_.id)));
-//			}
-//			if (criteria.getIctcBeneficiaryId() != null) {
-//				specification = specification.and(buildSpecification(criteria.getIctcBeneficiaryId(),
-//						root -> root.join(LabTestSample_.ictcBeneficiary, JoinType.LEFT).get(ICTCBeneficiary_.id)));
-//			}
-		}
-		return specification;
-	}
+
+    protected Specification<LabTestSample> createSpecification(LabTestSampleCriteria criteria) {
+        Specification<LabTestSample> specification = Specification.where(null);
+        if (criteria != null) {
+            if (criteria.getId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
+            }
+            if (criteria.getBarcodeNumber() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("barcodeNumber"), criteria.getBarcodeNumber()));
+            }
+            if (criteria.getIsDelete() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isDelete"), criteria.getIsDelete()));
+            }
+            if (criteria.getTestMachineTypeId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("testMachineTypeId"), criteria.getTestMachineTypeId()));
+            }
+            if (criteria.getTestTypeId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("testTypeId"), criteria.getTestTypeId()));
+            }
+            if (criteria.getBeneficiaryId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.join("beneficiary").get("id"), criteria.getBeneficiaryId()));
+            }
+            if (criteria.getBatchId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.join("batch").get("id"), criteria.getBatchId()));
+            }
+            if (criteria.getTestMachineId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("testMachineId"), criteria.getTestMachineId()));
+            }
+            if (criteria.getResultTypeId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("resultTypeId"), criteria.getResultTypeId()));
+            }
+            if (criteria.getMasterResultStatus() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("masterResultStatus"), criteria.getMasterResultStatus()));
+            }
+            if (criteria.getLabId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.join("lab").get("id"), criteria.getLabId()));
+            }
+            if (criteria.getFacilityId() != null) {
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.join("facility").get("id"), criteria.getFacilityId()));
+            }
+        }
+        return specification;
+    }
+
 }

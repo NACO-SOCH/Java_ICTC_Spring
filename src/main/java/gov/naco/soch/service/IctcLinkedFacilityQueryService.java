@@ -18,8 +18,6 @@ import gov.naco.soch.repository.IctcLinkedFacilityRepository;
 import gov.naco.soch.service.dto.IctcLinkedFacilityCriteria;
 import gov.naco.soch.service.dto.IctcLinkedFacilityDTO;
 import gov.naco.soch.service.mapper.IctcLinkedFacilityMapper;
-import io.github.jhipster.service.QueryService;
-
 /**
  * Service for executing complex queries for {@link IctcLinkedFacility} entities in the database.
  * The main input is a {@link IctcLinkedFacilityCriteria} which gets converted to {@link Specification},
@@ -28,7 +26,7 @@ import io.github.jhipster.service.QueryService;
  */
 @Service
 @Transactional(readOnly = true)
-public class IctcLinkedFacilityQueryService extends QueryService<IctcLinkedFacility> {
+public class IctcLinkedFacilityQueryService {
 
     private final Logger log = LoggerFactory.getLogger(IctcLinkedFacilityQueryService.class);
 
@@ -87,43 +85,55 @@ public class IctcLinkedFacilityQueryService extends QueryService<IctcLinkedFacil
      */
     @Measured(message = "Get LFAC createSpecification")
     protected Specification<IctcLinkedFacility> createSpecification(IctcLinkedFacilityCriteria criteria) {
-        Specification<IctcLinkedFacility> specification = Specification.where(null);
+    	Specification<IctcLinkedFacility> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), IctcLinkedFacility_.id));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
             }
             if (criteria.getFacilityName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getFacilityName(), IctcLinkedFacility_.facilityName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("facilityName"), criteria.getFacilityName()));
             }
             if (criteria.getLinkedFacilityId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getLinkedFacilityId(), IctcLinkedFacility_.linkedFacilityId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("linkedFacilityId"), criteria.getLinkedFacilityId()));
             }
             if (criteria.getFacilityId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getFacilityId(), IctcLinkedFacility_.facilityId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("facilityId"), criteria.getFacilityId()));
             }
             if (criteria.getFacilityType() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getFacilityType(), IctcLinkedFacility_.facilityType));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("facilityType"), criteria.getFacilityType()));
             }
             if (criteria.getIsActive() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsActive(), IctcLinkedFacility_.isActive));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isActive"), criteria.getIsActive()));
             }
             if (criteria.getIsDeleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsDeleted(), IctcLinkedFacility_.isDeleted));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isDeleted"), criteria.getIsDeleted()));
             }
             if (criteria.getStatus() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getStatus(), IctcLinkedFacility_.status));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("status"), criteria.getStatus()));
             }
             if (criteria.getCreatedBy() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCreatedBy(), IctcLinkedFacility_.createdBy));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("createdBy"), criteria.getCreatedBy()));
             }
             if (criteria.getCreatedTime() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCreatedTime(), IctcLinkedFacility_.createdTime));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("createdTime"), criteria.getCreatedTime()));
             }
             if (criteria.getModifiedBy() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getModifiedBy(), IctcLinkedFacility_.modifiedBy));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("modifiedBy"), criteria.getModifiedBy()));
             }
             if (criteria.getModifiedTime() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getModifiedTime(), IctcLinkedFacility_.modifiedTime));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("modifiedTime"), criteria.getModifiedTime()));
             }
         }
         return specification;

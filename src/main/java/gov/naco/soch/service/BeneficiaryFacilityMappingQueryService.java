@@ -241,7 +241,7 @@ public class BeneficiaryFacilityMappingQueryService {
 						.join(BeneficiaryFacilityMapping_.facility, JoinType.LEFT).get(Facility_.id)));
 			}
 
-		}
+		} 
 		return specification;
 	}
 

@@ -2,7 +2,6 @@ package gov.naco.soch.service;
 
 import java.util.List;
 
-import javax.persistence.criteria.JoinType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import io.github.jhipster.service.QueryService;
 import gov.naco.soch.domain.*; // for static metamodels
 import gov.naco.soch.repository.ICTCSampleBatchRepository;
 import gov.naco.soch.service.dto.ICTCSampleBatchCriteria;
@@ -27,7 +24,7 @@ import gov.naco.soch.service.mapper.ICTCSampleBatchMapper;
  */
 @Service
 @Transactional(readOnly = true)
-public class ICTCSampleBatchQueryService extends QueryService<ICTCSampleBatch> {
+public class ICTCSampleBatchQueryService {
 
     private final Logger log = LoggerFactory.getLogger(ICTCSampleBatchQueryService.class);
 
@@ -85,46 +82,38 @@ public class ICTCSampleBatchQueryService extends QueryService<ICTCSampleBatch> {
      */
     protected Specification<ICTCSampleBatch> createSpecification(ICTCSampleBatchCriteria criteria) {
         Specification<ICTCSampleBatch> specification = Specification.where(null);
-        if (criteria != null) {
-            if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), ICTCSampleBatch_.id));
+        return Specification.<ICTCSampleBatch>where((root, query, builder) -> {
+            if (criteria != null) {
+                if (criteria.getId() != null) {
+                    return builder.equal(root.get("id"), criteria.getId());
+                }
+
+                if (criteria.getConsignmentId() != null) {
+                    return builder.equal(root.get("consignmentId"), criteria.getConsignmentId());
+                }
+
+                if (criteria.getBatchStatus() != null) {
+                    return builder.equal(root.get("batchStatus"), criteria.getBatchStatus());
+                }
+
+                if (criteria.getIsActive() != null) {
+                    return builder.equal(root.get("isActive"), criteria.getIsActive());
+                }
+
+                if (criteria.getIsDeleted() != null) {
+                    return builder.equal(root.get("isDeleted"), criteria.getIsDeleted());
+                }
+
+                if (criteria.getLabId() != null) {
+                    return builder.equal(root.join("facility").get("id"), criteria.getLabId());
+                }
+
+                if (criteria.getFacilityId() != null) {
+                    return builder.equal(root.join("lab").get("id"), criteria.getFacilityId());
+                }
             }
-            if (criteria.getConsignmentId() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getConsignmentId(), ICTCSampleBatch_.consignmentId));
-            }
-//            if (criteria.getDispatchDate() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getDispatchDate(), ICTCSampleBatch_.dispatchDate));
-//            }
-            if (criteria.getBatchStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBatchStatus(), ICTCSampleBatch_.batchStatus));
-            }
-//            if (criteria.getCreatedBy() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getCreatedBy(), ICTCSampleBatch_.createdBy));
-//            }
-//            if (criteria.getCreatedTime() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getCreatedTime(), ICTCSampleBatch_.createdTime));
-//            }
-//            if (criteria.getModifiedBy() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getModifiedBy(), ICTCSampleBatch_.modifiedBy));
-//            }
-//            if (criteria.getModifiedTime() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getModifiedTime(), ICTCSampleBatch_.modifiedTime));
-//            }
-            if (criteria.getIsActive() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsActive(), ICTCSampleBatch_.isActive));
-            }
-            if (criteria.getIsDeleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsDeleted(), ICTCSampleBatch_.isDeleted));
-            }
-            if (criteria.getLabId() != null) {
-                specification = specification.and(buildSpecification(criteria.getLabId(),
-                    root -> root.join(ICTCSampleBatch_.facility, JoinType.LEFT).get(Facility_.id)));
-            }
-            if (criteria.getFacilityId() != null) {
-                specification = specification.and(buildSpecification(criteria.getFacilityId(),
-                    root -> root.join(ICTCSampleBatch_.lab, JoinType.LEFT).get(Facility_.id)));
-            }
-        }
-        return specification;
+
+            return null;
+        });
     }
 }

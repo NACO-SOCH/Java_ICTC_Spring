@@ -17,6 +17,7 @@ public class FICTCMonthlyReportResponseDto {
 	private Integer prtcMaleClients;
 	private Integer prtcFemaleClients;
 	private Integer prtcTgClients;
+	private Integer prtcPncCount;
 
 	//Page2 - t is for tested
 	private Integer tHivAncCount;
@@ -24,6 +25,7 @@ public class FICTCMonthlyReportResponseDto {
 	private Integer tHivMaleClients;
 	private Integer tHivFemaleClients;
 	private Integer tHivTgClients;
+	private Integer tHivPncCount;
 	
 	//Page3 post-test counselling
 	private Integer potcAncCount;
@@ -31,6 +33,7 @@ public class FICTCMonthlyReportResponseDto {
 	private Integer potcMaleClients;
 	private Integer potcFemaleClients;
 	private Integer potcTgClients;
+	private Integer potcPncCount;
 
 	
 	//Page4 No. of clients detected HIV reactive
@@ -39,11 +42,19 @@ public class FICTCMonthlyReportResponseDto {
 	private Integer hivReactiveMaleClients;
 	private Integer hivReactiveFemaleClients;
 	private Integer hivReactiveTgClients;
+	private Integer hivReactivePncCount;
+	private Integer linkedSaIctcAncCount;
+	private Integer linkedSaIctcDirectInLabour;
+	private Integer linkedSaIctcPncCount;
+	private Integer linkedSaIctcMaleClients;
+	private Integer linkedSaIctcFemaleClients;
+	private Integer linkedSaIctcTgClients;
 	
 	//Page5
 	private Integer ancClientsRegistered;
 	private Integer ancClientsTested;
 	private Integer ancClientsReactive;
+	private Integer ancClientsTreated;
 	
 	//Page6
 	private String hivKitName;
@@ -73,21 +84,48 @@ public class FICTCMonthlyReportResponseDto {
 	private Integer tiNgosOutreferral;
 	private Integer linkWorkerInreferral;
 	private Integer linkWorkerOutreferral;
-	private Integer rnctpInreferral;
-	private Integer rnctpOutreferral;
+	private Integer rnctpInreferral;//This field has been changed to NTEP from RNTCP on UI - 13th May 2021 - Adarsh/Vikram
+	private Integer rnctpOutreferral;//This field has been changed to NTEP from RNTCP on UI - 13th May 2021 - Adarsh/Vikram
 	private Integer sticClinicInreferral;
 	private Integer sticClinicOutreferral;
 	private Integer otherInreferral;
 	private Integer otherOutreferral;
+	private Integer walkinInreferral;
+	private Integer walkinOutreferral;
 	
 	//Page8
 	private Integer diagnosedStiRtiMale;
-	private Integer diagnosedStiRtiFemale;
+	//private Integer diagnosedStiRtiFemale;
+	private Integer diagnosedStiRtiPregnantFemale;
+	private Integer diagnosedStiRtiNonPregnantFemale;
+	private Integer diagnosedStiRtiTransgender;
+	
 	private Integer testedForSyphillisMale;
-	private Integer testedForSyphillisFemale;
+	//private Integer testedForSyphillisFemale;
+	private Integer testedForSyphillisPregnantFemale;
+	private Integer testedForSyphillisNonPregnantFemale;
+	private Integer testedForSyphillisTransgender;
+	
 	private Integer reactiveForSyphillisMale;
-	private Integer reactiveForSyphillisFemale;
+	//private Integer reactiveForSyphillisFemale;
+	private Integer reactiveForSyphillisPregnantFemale;
+	private Integer reactiveForSyphillisNonPregnantFemale;
+	private Integer reactiveForSyphillisTransgender;
+	
 	private Boolean availabilityDrugType;
+	
+	private Integer treatmentForSyphillisMale;
+	private Integer treatmentForSyphillisPregnantFemale;
+	private Integer treatmentForSyphillisNonPregnantFemale;
+	private Integer treatmentForSyphillisTransgender;
+	
+	private Integer fourSAncCount;
+	private Integer fourSDirectInLabour;
+	private Integer fourSMaleClients;
+	private Integer fourSFemaleClients;
+	private Integer fourSTgClients;
+	private Integer fourSPncCount;
+	
 
 	private Boolean reportSubmitStatus;
 	private Long createdBy;
@@ -110,8 +148,15 @@ public class FICTCMonthlyReportResponseDto {
 	private long testedForSyphillisTotal;
 	private long reactiveForSyphillisTotal;
 	
+	private long linkedSaIctcPwTotal;
+	private long linkedSaIctcGcTotal;
+	private long treatmentForSyphillisTotal;
+	private long fourSPwTotal;
+	private long fourSGcTotal;
+	
 	private Integer reportYear;
 	private Integer reportMonth;
+	
 	public Long getId() {
 		return id;
 	}
@@ -154,6 +199,12 @@ public class FICTCMonthlyReportResponseDto {
 	public void setPrtcTgClients(Integer prtcTgClients) {
 		this.prtcTgClients = prtcTgClients;
 	}
+	public Integer getPrtcPncCount() {
+		return prtcPncCount;
+	}
+	public void setPrtcPncCount(Integer prtcPncCount) {
+		this.prtcPncCount = prtcPncCount;
+	}
 	public Integer gettHivAncCount() {
 		return tHivAncCount;
 	}
@@ -183,6 +234,12 @@ public class FICTCMonthlyReportResponseDto {
 	}
 	public void settHivTgClients(Integer tHivTgClients) {
 		this.tHivTgClients = tHivTgClients;
+	}
+	public Integer gettHivPncCount() {
+		return tHivPncCount;
+	}
+	public void settHivPncCount(Integer tHivPncCount) {
+		this.tHivPncCount = tHivPncCount;
 	}
 	public Integer getPotcAncCount() {
 		return potcAncCount;
@@ -214,6 +271,12 @@ public class FICTCMonthlyReportResponseDto {
 	public void setPotcTgClients(Integer potcTgClients) {
 		this.potcTgClients = potcTgClients;
 	}
+	public Integer getPotcPncCount() {
+		return potcPncCount;
+	}
+	public void setPotcPncCount(Integer potcPncCount) {
+		this.potcPncCount = potcPncCount;
+	}
 	public Integer getHivReactiveAncCount() {
 		return hivReactiveAncCount;
 	}
@@ -244,6 +307,48 @@ public class FICTCMonthlyReportResponseDto {
 	public void setHivReactiveTgClients(Integer hivReactiveTgClients) {
 		this.hivReactiveTgClients = hivReactiveTgClients;
 	}
+	public Integer getHivReactivePncCount() {
+		return hivReactivePncCount;
+	}
+	public void setHivReactivePncCount(Integer hivReactivePncCount) {
+		this.hivReactivePncCount = hivReactivePncCount;
+	}
+	public Integer getLinkedSaIctcAncCount() {
+		return linkedSaIctcAncCount;
+	}
+	public void setLinkedSaIctcAncCount(Integer linkedSaIctcAncCount) {
+		this.linkedSaIctcAncCount = linkedSaIctcAncCount;
+	}
+	public Integer getLinkedSaIctcDirectInLabour() {
+		return linkedSaIctcDirectInLabour;
+	}
+	public void setLinkedSaIctcDirectInLabour(Integer linkedSaIctcDirectInLabour) {
+		this.linkedSaIctcDirectInLabour = linkedSaIctcDirectInLabour;
+	}
+	public Integer getLinkedSaIctcPncCount() {
+		return linkedSaIctcPncCount;
+	}
+	public void setLinkedSaIctcPncCount(Integer linkedSaIctcPncCount) {
+		this.linkedSaIctcPncCount = linkedSaIctcPncCount;
+	}
+	public Integer getLinkedSaIctcMaleClients() {
+		return linkedSaIctcMaleClients;
+	}
+	public void setLinkedSaIctcMaleClients(Integer linkedSaIctcMaleClients) {
+		this.linkedSaIctcMaleClients = linkedSaIctcMaleClients;
+	}
+	public Integer getLinkedSaIctcFemaleClients() {
+		return linkedSaIctcFemaleClients;
+	}
+	public void setLinkedSaIctcFemaleClients(Integer linkedSaIctcFemaleClients) {
+		this.linkedSaIctcFemaleClients = linkedSaIctcFemaleClients;
+	}
+	public Integer getLinkedSaIctcTgClients() {
+		return linkedSaIctcTgClients;
+	}
+	public void setLinkedSaIctcTgClients(Integer linkedSaIctcTgClients) {
+		this.linkedSaIctcTgClients = linkedSaIctcTgClients;
+	}
 	public Integer getAncClientsRegistered() {
 		return ancClientsRegistered;
 	}
@@ -261,6 +366,12 @@ public class FICTCMonthlyReportResponseDto {
 	}
 	public void setAncClientsReactive(Integer ancClientsReactive) {
 		this.ancClientsReactive = ancClientsReactive;
+	}
+	public Integer getAncClientsTreated() {
+		return ancClientsTreated;
+	}
+	public void setAncClientsTreated(Integer ancClientsTreated) {
+		this.ancClientsTreated = ancClientsTreated;
 	}
 	public String getHivKitName() {
 		return hivKitName;
@@ -436,17 +547,41 @@ public class FICTCMonthlyReportResponseDto {
 	public void setOtherOutreferral(Integer otherOutreferral) {
 		this.otherOutreferral = otherOutreferral;
 	}
+	public Integer getWalkinInreferral() {
+		return walkinInreferral;
+	}
+	public void setWalkinInreferral(Integer walkinInreferral) {
+		this.walkinInreferral = walkinInreferral;
+	}
+	public Integer getWalkinOutreferral() {
+		return walkinOutreferral;
+	}
+	public void setWalkinOutreferral(Integer walkinOutreferral) {
+		this.walkinOutreferral = walkinOutreferral;
+	}
 	public Integer getDiagnosedStiRtiMale() {
 		return diagnosedStiRtiMale;
 	}
 	public void setDiagnosedStiRtiMale(Integer diagnosedStiRtiMale) {
 		this.diagnosedStiRtiMale = diagnosedStiRtiMale;
 	}
-	public Integer getDiagnosedStiRtiFemale() {
-		return diagnosedStiRtiFemale;
+	public Integer getDiagnosedStiRtiPregnantFemale() {
+		return diagnosedStiRtiPregnantFemale;
 	}
-	public void setDiagnosedStiRtiFemale(Integer diagnosedStiRtiFemale) {
-		this.diagnosedStiRtiFemale = diagnosedStiRtiFemale;
+	public void setDiagnosedStiRtiPregnantFemale(Integer diagnosedStiRtiPregnantFemale) {
+		this.diagnosedStiRtiPregnantFemale = diagnosedStiRtiPregnantFemale;
+	}
+	public Integer getDiagnosedStiRtiNonPregnantFemale() {
+		return diagnosedStiRtiNonPregnantFemale;
+	}
+	public void setDiagnosedStiRtiNonPregnantFemale(Integer diagnosedStiRtiNonPregnantFemale) {
+		this.diagnosedStiRtiNonPregnantFemale = diagnosedStiRtiNonPregnantFemale;
+	}
+	public Integer getDiagnosedStiRtiTransgender() {
+		return diagnosedStiRtiTransgender;
+	}
+	public void setDiagnosedStiRtiTransgender(Integer diagnosedStiRtiTransgender) {
+		this.diagnosedStiRtiTransgender = diagnosedStiRtiTransgender;
 	}
 	public Integer getTestedForSyphillisMale() {
 		return testedForSyphillisMale;
@@ -454,11 +589,23 @@ public class FICTCMonthlyReportResponseDto {
 	public void setTestedForSyphillisMale(Integer testedForSyphillisMale) {
 		this.testedForSyphillisMale = testedForSyphillisMale;
 	}
-	public Integer getTestedForSyphillisFemale() {
-		return testedForSyphillisFemale;
+	public Integer getTestedForSyphillisPregnantFemale() {
+		return testedForSyphillisPregnantFemale;
 	}
-	public void setTestedForSyphillisFemale(Integer testedForSyphillisFemale) {
-		this.testedForSyphillisFemale = testedForSyphillisFemale;
+	public void setTestedForSyphillisPregnantFemale(Integer testedForSyphillisPregnantFemale) {
+		this.testedForSyphillisPregnantFemale = testedForSyphillisPregnantFemale;
+	}
+	public Integer getTestedForSyphillisNonPregnantFemale() {
+		return testedForSyphillisNonPregnantFemale;
+	}
+	public void setTestedForSyphillisNonPregnantFemale(Integer testedForSyphillisNonPregnantFemale) {
+		this.testedForSyphillisNonPregnantFemale = testedForSyphillisNonPregnantFemale;
+	}
+	public Integer getTestedForSyphillisTransgender() {
+		return testedForSyphillisTransgender;
+	}
+	public void setTestedForSyphillisTransgender(Integer testedForSyphillisTransgender) {
+		this.testedForSyphillisTransgender = testedForSyphillisTransgender;
 	}
 	public Integer getReactiveForSyphillisMale() {
 		return reactiveForSyphillisMale;
@@ -466,17 +613,89 @@ public class FICTCMonthlyReportResponseDto {
 	public void setReactiveForSyphillisMale(Integer reactiveForSyphillisMale) {
 		this.reactiveForSyphillisMale = reactiveForSyphillisMale;
 	}
-	public Integer getReactiveForSyphillisFemale() {
-		return reactiveForSyphillisFemale;
+	public Integer getReactiveForSyphillisPregnantFemale() {
+		return reactiveForSyphillisPregnantFemale;
 	}
-	public void setReactiveForSyphillisFemale(Integer reactiveForSyphillisFemale) {
-		this.reactiveForSyphillisFemale = reactiveForSyphillisFemale;
+	public void setReactiveForSyphillisPregnantFemale(Integer reactiveForSyphillisPregnantFemale) {
+		this.reactiveForSyphillisPregnantFemale = reactiveForSyphillisPregnantFemale;
+	}
+	public Integer getReactiveForSyphillisNonPregnantFemale() {
+		return reactiveForSyphillisNonPregnantFemale;
+	}
+	public void setReactiveForSyphillisNonPregnantFemale(Integer reactiveForSyphillisNonPregnantFemale) {
+		this.reactiveForSyphillisNonPregnantFemale = reactiveForSyphillisNonPregnantFemale;
+	}
+	public Integer getReactiveForSyphillisTransgender() {
+		return reactiveForSyphillisTransgender;
+	}
+	public void setReactiveForSyphillisTransgender(Integer reactiveForSyphillisTransgender) {
+		this.reactiveForSyphillisTransgender = reactiveForSyphillisTransgender;
 	}
 	public Boolean getAvailabilityDrugType() {
 		return availabilityDrugType;
 	}
 	public void setAvailabilityDrugType(Boolean availabilityDrugType) {
 		this.availabilityDrugType = availabilityDrugType;
+	}
+	public Integer getTreatmentForSyphillisMale() {
+		return treatmentForSyphillisMale;
+	}
+	public void setTreatmentForSyphillisMale(Integer treatmentForSyphillisMale) {
+		this.treatmentForSyphillisMale = treatmentForSyphillisMale;
+	}
+	public Integer getTreatmentForSyphillisPregnantFemale() {
+		return treatmentForSyphillisPregnantFemale;
+	}
+	public void setTreatmentForSyphillisPregnantFemale(Integer treatmentForSyphillisPregnantFemale) {
+		this.treatmentForSyphillisPregnantFemale = treatmentForSyphillisPregnantFemale;
+	}
+	public Integer getTreatmentForSyphillisNonPregnantFemale() {
+		return treatmentForSyphillisNonPregnantFemale;
+	}
+	public void setTreatmentForSyphillisNonPregnantFemale(Integer treatmentForSyphillisNonPregnantFemale) {
+		this.treatmentForSyphillisNonPregnantFemale = treatmentForSyphillisNonPregnantFemale;
+	}
+	public Integer getTreatmentForSyphillisTransgender() {
+		return treatmentForSyphillisTransgender;
+	}
+	public void setTreatmentForSyphillisTransgender(Integer treatmentForSyphillisTransgender) {
+		this.treatmentForSyphillisTransgender = treatmentForSyphillisTransgender;
+	}
+	public Integer getFourSAncCount() {
+		return fourSAncCount;
+	}
+	public void setFourSAncCount(Integer fourSAncCount) {
+		this.fourSAncCount = fourSAncCount;
+	}
+	public Integer getFourSDirectInLabour() {
+		return fourSDirectInLabour;
+	}
+	public void setFourSDirectInLabour(Integer fourSDirectInLabour) {
+		this.fourSDirectInLabour = fourSDirectInLabour;
+	}
+	public Integer getFourSMaleClients() {
+		return fourSMaleClients;
+	}
+	public void setFourSMaleClients(Integer fourSMaleClients) {
+		this.fourSMaleClients = fourSMaleClients;
+	}
+	public Integer getFourSFemaleClients() {
+		return fourSFemaleClients;
+	}
+	public void setFourSFemaleClients(Integer fourSFemaleClients) {
+		this.fourSFemaleClients = fourSFemaleClients;
+	}
+	public Integer getFourSTgClients() {
+		return fourSTgClients;
+	}
+	public void setFourSTgClients(Integer fourSTgClients) {
+		this.fourSTgClients = fourSTgClients;
+	}
+	public Integer getFourSPncCount() {
+		return fourSPncCount;
+	}
+	public void setFourSPncCount(Integer fourSPncCount) {
+		this.fourSPncCount = fourSPncCount;
 	}
 	public Boolean getReportSubmitStatus() {
 		return reportSubmitStatus;
@@ -586,6 +805,31 @@ public class FICTCMonthlyReportResponseDto {
 	public void setReactiveForSyphillisTotal(long reactiveForSyphillisTotal) {
 		this.reactiveForSyphillisTotal = reactiveForSyphillisTotal;
 	}
+	public long getLinkedSaIctcPwTotal() {
+		return linkedSaIctcPwTotal;
+	}
+	public void setLinkedSaIctcPwTotal(long linkedSaIctcPwTotal) {
+		this.linkedSaIctcPwTotal = linkedSaIctcPwTotal;
+	}
+	public long getLinkedSaIctcGcTotal() {
+		return linkedSaIctcGcTotal;
+	}
+	public void setLinkedSaIctcGcTotal(long linkedSaIctcGcTotal) {
+		this.linkedSaIctcGcTotal = linkedSaIctcGcTotal;
+	}
+	
+	public long getFourSPwTotal() {
+		return fourSPwTotal;
+	}
+	public void setFourSPwTotal(long fourSPwTotal) {
+		this.fourSPwTotal = fourSPwTotal;
+	}
+	public long getFourSGcTotal() {
+		return fourSGcTotal;
+	}
+	public void setFourSGcTotal(long fourSGcTotal) {
+		this.fourSGcTotal = fourSGcTotal;
+	}
 	public Integer getReportYear() {
 		return reportYear;
 	}
@@ -598,6 +842,11 @@ public class FICTCMonthlyReportResponseDto {
 	public void setReportMonth(Integer reportMonth) {
 		this.reportMonth = reportMonth;
 	}
-
+	public long getTreatmentForSyphillisTotal() {
+		return treatmentForSyphillisTotal;
+	}
+	public void setTreatmentForSyphillisTotal(long treatmentForSyphillisTotal) {
+		this.treatmentForSyphillisTotal = treatmentForSyphillisTotal;
+	}
 	
 }

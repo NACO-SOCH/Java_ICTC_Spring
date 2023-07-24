@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import io.github.jhipster.service.QueryService;
 import gov.naco.soch.domain.*; // for static metamodels
 import gov.naco.soch.repository.ICTCSampleCollectionViewRepository;
 import gov.naco.soch.service.dto.ICTCSampleCollectionViewCriteria;
@@ -26,7 +24,7 @@ import gov.naco.soch.service.mapper.ICTCSampleCollectionViewMapper;
  */
 @Service
 @Transactional(readOnly = true)
-public class ICTCSampleCollectionViewQueryService extends QueryService<ICTCSampleCollectionView> {
+public class ICTCSampleCollectionViewQueryService  {
 
     private final Logger log = LoggerFactory.getLogger(ICTCSampleCollectionViewQueryService.class);
 
@@ -68,71 +66,80 @@ public class ICTCSampleCollectionViewQueryService extends QueryService<ICTCSampl
     /**
      * Function to convert ICTCSampleCollectionViewCriteria to a {@link Specification}
      */
-    private Specification<ICTCSampleCollectionView> createSpecification(ICTCSampleCollectionViewCriteria criteria) {
+    protected Specification<ICTCSampleCollectionView> createSpecification(ICTCSampleCollectionViewCriteria criteria) {
         Specification<ICTCSampleCollectionView> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getId() != null) {
-                specification = specification.or(buildSpecification(criteria.getId(), ICTCSampleCollectionView_.id));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
             }
             if (criteria.getInfantCode() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getInfantCode(), ICTCSampleCollectionView_.infantCode));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantCode"), criteria.getInfantCode()));
             }
             if (criteria.getFirstName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getFirstName(), ICTCSampleCollectionView_.firstName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("firstName"), criteria.getFirstName()));
             }
             if (criteria.getMiddleName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getMiddleName(), ICTCSampleCollectionView_.middleName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("middleName"), criteria.getMiddleName()));
             }
             if (criteria.getLastName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLastName(), ICTCSampleCollectionView_.lastName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("lastName"), criteria.getLastName()));
             }
             if (criteria.getAge() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getAge(), ICTCSampleCollectionView_.age));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("age"), criteria.getAge()));
             }
-//            if (criteria.getGender() != null) {
-//                specification = specification.or(buildStringSpecification(criteria.getGender(), ICTCSampleCollectionView_.gender));
-//            }
             if (criteria.getVisitDate() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getVisitDate(), ICTCSampleCollectionView_.visitDate));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("visitDate"), criteria.getVisitDate()));
             }
             if (criteria.getTestType() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getTestType(), ICTCSampleCollectionView_.testType));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("testType"), criteria.getTestType()));
             }
             if (criteria.getIctcBeneficiaryId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getIctcBeneficiaryId(), ICTCSampleCollectionView_.ictcBeneficiaryId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("ictcBeneficiaryId"), criteria.getIctcBeneficiaryId()));
             }
             if (criteria.getVisitId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getVisitId(), ICTCSampleCollectionView_.visitId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("visitId"), criteria.getVisitId()));
             }
             if (criteria.getPid() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getPid(), ICTCSampleCollectionView_.pid));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("pid"), criteria.getPid()));
             }
             if (criteria.getUid() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getUid(), ICTCSampleCollectionView_.uid));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("uid"), criteria.getUid()));
             }
             if (criteria.getBarcode() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getBarcode(), ICTCSampleCollectionView_.barcode));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("barcode"), criteria.getBarcode()));
             }
-//            if (criteria.getSampleCollectionDate() != null) {
-//                specification = specification.or(buildRangeSpecification(criteria.getSampleCollectionDate(), ICTCSampleCollectionView_.sampleCollectionDate));
-//            }
             if (criteria.getSampleCollectionStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getSampleCollectionStatus(), ICTCSampleCollectionView_.sampleCollectionStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("sampleCollectionStatus"), criteria.getSampleCollectionStatus()));
             }
-//            if (criteria.getCategory() != null) {
-//                specification = specification.and(buildStringSpecification(criteria.getCategory(), ICTCSampleCollectionView_.category));
-//            }
             if (criteria.getBatchId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBatchId(), ICTCSampleCollectionView_.batchId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("batchId"), criteria.getBatchId()));
             }
             if (criteria.getFacilityId() != null) {
-            	specification = specification.and(buildRangeSpecification(criteria.getFacilityId(), ICTCSampleCollectionView_.facilityId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("facilityId"), criteria.getFacilityId()));
             }
             if (criteria.getCategoryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCategoryId(), ICTCSampleCollectionView_.categoryId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("categoryId"), criteria.getCategoryId()));
             }
             if (criteria.getGenderId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getGenderId(), ICTCSampleCollectionView_.genderId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("genderId"), criteria.getGenderId()));
             }
         }
         return specification;

@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 // for static metamodels
 import gov.naco.soch.domain.RiskProfilingQuestions;
-import gov.naco.soch.domain.RiskProfilingQuestions_;
 import gov.naco.soch.repository.RiskProfilingQuestionsRepository;
 import gov.naco.soch.service.dto.RiskProfilingQuestionsCriteria;
 import gov.naco.soch.service.dto.RiskProfilingQuestionsDTO;
@@ -85,15 +84,19 @@ public class RiskProfilingQuestionsQueryService {
         Specification<RiskProfilingQuestions> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), RiskProfilingQuestions_.id));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
             }
             if (criteria.getQuestion() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getQuestion(), RiskProfilingQuestions_.question));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("question"), criteria.getQuestion()));
             }
             if (criteria.getAnswers() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getAnswers(), RiskProfilingQuestions_.answers));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("answers"), criteria.getAnswers()));
             }
         }
         return specification;
     }
+
 }

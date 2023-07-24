@@ -1,9 +1,0 @@
-gov\naco\soch\dto\IctcSearchResultDTO.class
-gov\naco\soch\dto\DefaultFacilityDto.class
-gov\naco\soch\controller\NewICTCController.class
-gov\naco\soch\ictc\ICTCApplication.class
-gov\naco\soch\ictc\WebMvcConfig.class
-gov\naco\soch\ictc\ApiKeyInterceptor.class
-gov\naco\soch\ictc\XSecretAuthorizeAttribute.class
-gov\naco\soch\dto\NewICTCDto.class
-gov\naco\soch\service\NewICTCService.class

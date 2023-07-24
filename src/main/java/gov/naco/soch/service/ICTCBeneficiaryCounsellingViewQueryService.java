@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import gov.naco.soch.domain.ICTCBeneficiaryCounsellingView;
-import gov.naco.soch.domain.ICTCBeneficiaryCounsellingView_;
 // for static metamodels
 import gov.naco.soch.repository.ICTCBeneficiaryCounsellingViewRepository;
 import gov.naco.soch.service.dto.ICTCBeneficiaryCounsellingViewCriteria;
@@ -76,112 +75,148 @@ public class ICTCBeneficiaryCounsellingViewQueryService {
         Specification<ICTCBeneficiaryCounsellingView> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), ICTCBeneficiaryCounsellingView_.id));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
             }
             if (criteria.getUid() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getUid(), ICTCBeneficiaryCounsellingView_.uid));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("uid"), criteria.getUid()));
             }
             if (criteria.getPid() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getPid(), ICTCBeneficiaryCounsellingView_.pid));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("pid"), criteria.getPid()));
             }
             if (criteria.getFirstName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getFirstName(), ICTCBeneficiaryCounsellingView_.firstName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("firstName"), criteria.getFirstName()));
             }
             if (criteria.getMiddleName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getMiddleName(), ICTCBeneficiaryCounsellingView_.middleName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("middleName"), criteria.getMiddleName()));
             }
             if (criteria.getLastName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLastName(), ICTCBeneficiaryCounsellingView_.lastName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("lastName"), criteria.getLastName()));
             }
             if (criteria.getOccupationId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getOccupationId(), ICTCBeneficiaryCounsellingView_.occupationId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("occupationId"), criteria.getOccupationId()));
             }
             if (criteria.getMaritalStatusId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getMaritalStatusId(), ICTCBeneficiaryCounsellingView_.maritalStatusId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("maritalStatusId"), criteria.getMaritalStatusId()));
             }
             if (criteria.getDateOfBirth() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getDateOfBirth(), ICTCBeneficiaryCounsellingView_.dateOfBirth));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("dateOfBirth"), criteria.getDateOfBirth()));
             }
             if (criteria.getAge() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getAge(), ICTCBeneficiaryCounsellingView_.age));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("age"), criteria.getAge()));
             }
             if (criteria.getMobileNumber() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getMobileNumber(), ICTCBeneficiaryCounsellingView_.mobileNumber));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("mobileNumber"), criteria.getMobileNumber()));
             }
             if (criteria.getInfantBreastFed() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getInfantBreastFed(), ICTCBeneficiaryCounsellingView_.infantBreastFed));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("infantBreastFed"), criteria.getInfantBreastFed()));
             }
             if (criteria.getInfantMotherArtNo() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getInfantMotherArtNo(), ICTCBeneficiaryCounsellingView_.infantMotherArtNo));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("infantMotherArtNo"), criteria.getInfantMotherArtNo()));
             }
             if (criteria.getInfantMotherArtId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getInfantMotherArtId(), ICTCBeneficiaryCounsellingView_.infantMotherArtId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("infantMotherArtId"), criteria.getInfantMotherArtId()));
             }
             if (criteria.getInfantCode() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getInfantCode(), ICTCBeneficiaryCounsellingView_.infantCode));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("infantCode"), criteria.getInfantCode()));
             }
             if (criteria.getVisitDate() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getVisitDate(), ICTCBeneficiaryCounsellingView_.visitDate));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("visitDate"), criteria.getVisitDate()));
             }
             if (criteria.getIsPregnant() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsPregnant(), ICTCBeneficiaryCounsellingView_.isPregnant));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isPregnant"), criteria.getIsPregnant()));
             }
             if (criteria.getVisitId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getVisitId(), ICTCBeneficiaryCounsellingView_.visitId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("visitId"), criteria.getVisitId()));
             }
             if (criteria.getTestType() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getTestType(), ICTCBeneficiaryCounsellingView_.testType));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("testType"), criteria.getTestType()));
             }
             if (criteria.getResultStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getResultStatus(), ICTCBeneficiaryCounsellingView_.resultStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("resultStatus"), criteria.getResultStatus()));
             }
             if (criteria.getHivStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getHivStatus(), ICTCBeneficiaryCounsellingView_.hivStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("hivStatus"), criteria.getHivStatus()));
             }
             if (criteria.getHivType() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getHivType(), ICTCBeneficiaryCounsellingView_.hivType));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("hivType"), criteria.getHivType()));
             }
             if (criteria.getReportReceivedDate() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getReportReceivedDate(), ICTCBeneficiaryCounsellingView_.reportReceivedDate));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("reportReceivedDate"), criteria.getReportReceivedDate()));
             }
             if (criteria.getReportDeliveryDate() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getReportDeliveryDate(), ICTCBeneficiaryCounsellingView_.reportDeliveryDate));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("reportDeliveryDate"), criteria.getReportDeliveryDate()));
             }
             if (criteria.getBarcode() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getBarcode(), ICTCBeneficiaryCounsellingView_.barcode));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("barcode"), criteria.getBarcode()));
             }
             if (criteria.getBeneficiaryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBeneficiaryId(), ICTCBeneficiaryCounsellingView_.beneficiaryId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("beneficiaryId"), criteria.getBeneficiaryId()));
             }
             if (criteria.getInfantMotherFirstName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getInfantMotherFirstName(), ICTCBeneficiaryCounsellingView_.infantMotherFirstName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("infantMotherFirstName"), criteria.getInfantMotherFirstName()));
             }
             if (criteria.getInfantMotherLastName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getInfantMotherLastName(), ICTCBeneficiaryCounsellingView_.infantMotherLastName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("infantMotherLastName"), criteria.getInfantMotherLastName()));
             }
             if (criteria.getBeneficiaryStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBeneficiaryStatus(), ICTCBeneficiaryCounsellingView_.beneficiaryStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("beneficiaryStatus"), criteria.getBeneficiaryStatus()));
             }
             if (criteria.getIsConsentDocumented() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsConsentDocumented(), ICTCBeneficiaryCounsellingView_.isConsentDocumented));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isConsentDocumented"), criteria.getIsConsentDocumented()));
             }
             if (criteria.getFacilityId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getFacilityId(), ICTCBeneficiaryCounsellingView_.facilityId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("facilityId"), criteria.getFacilityId()));
             }
             if (criteria.getCategoryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCategoryId(), ICTCBeneficiaryCounsellingView_.categoryId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("categoryId"), criteria.getCategoryId()));
             }
             if (criteria.getGenderId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getGenderId(), ICTCBeneficiaryCounsellingView_.genderId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("genderId"), criteria.getGenderId()));
             }
             if (criteria.getIsActive() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsActive(), ICTCBeneficiaryCounsellingView_.isActive));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isActive"), criteria.getIsActive()));
             }
             if (criteria.getIsDeleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsDeleted(), ICTCBeneficiaryCounsellingView_.isDeleted));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isDeleted"), criteria.getIsDeleted()));
             }
             if (criteria.getIsPostTestCounsellingCompleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsPostTestCounsellingCompleted(), ICTCBeneficiaryCounsellingView_.isPostTestCounsellingCompleted));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isPostTestCounsellingCompleted"), criteria.getIsPostTestCounsellingCompleted()));
             }
         }
         return specification;
@@ -191,127 +226,160 @@ public class ICTCBeneficiaryCounsellingViewQueryService {
         Specification<ICTCBeneficiaryCounsellingView> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getId(), ICTCBeneficiaryCounsellingView_.id));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
             }
             if (criteria.getPid() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getPid(), ICTCBeneficiaryCounsellingView_.pid));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("pid"), criteria.getPid()));
             }
             if (criteria.getUid() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getUid(), ICTCBeneficiaryCounsellingView_.uid));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("uid"), criteria.getUid()));
             }
             if (criteria.getFirstName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getFirstName(), ICTCBeneficiaryCounsellingView_.firstName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("firstName"), criteria.getFirstName()));
             }
             if (criteria.getMiddleName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getMiddleName(), ICTCBeneficiaryCounsellingView_.middleName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("middleName"), criteria.getMiddleName()));
             }
             if (criteria.getLastName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLastName(), ICTCBeneficiaryCounsellingView_.lastName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("lastName"), criteria.getLastName()));
             }
             if (criteria.getOccupationId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getOccupationId(), ICTCBeneficiaryCounsellingView_.occupationId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("occupationId"), criteria.getOccupationId()));
             }
             if (criteria.getMaritalStatusId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getMaritalStatusId(), ICTCBeneficiaryCounsellingView_.maritalStatusId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("maritalStatusId"), criteria.getMaritalStatusId()));
             }
             if (criteria.getDateOfBirth() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getDateOfBirth(), ICTCBeneficiaryCounsellingView_.dateOfBirth));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("dateOfBirth"), criteria.getDateOfBirth()));
             }
             if (criteria.getAge() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getAge(), ICTCBeneficiaryCounsellingView_.age));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("age"), criteria.getAge()));
             }
             if (criteria.getMobileNumber() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getMobileNumber(), ICTCBeneficiaryCounsellingView_.mobileNumber));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("mobileNumber"), criteria.getMobileNumber()));
             }
             if (criteria.getInfantBreastFed() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getInfantBreastFed(), ICTCBeneficiaryCounsellingView_.infantBreastFed));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantBreastFed"), criteria.getInfantBreastFed()));
             }
             if (criteria.getInfantMotherArtNo() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getInfantMotherArtNo(), ICTCBeneficiaryCounsellingView_.infantMotherArtNo));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantMotherArtNo"), criteria.getInfantMotherArtNo()));
             }
             if (criteria.getInfantMotherArtId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getInfantMotherArtId(), ICTCBeneficiaryCounsellingView_.infantMotherArtId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantMotherArtId"), criteria.getInfantMotherArtId()));
             }
             if (criteria.getInfantCode() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getInfantCode(), ICTCBeneficiaryCounsellingView_.infantCode));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantCode"), criteria.getInfantCode()));
             }
             if (criteria.getVisitDate() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getVisitDate(), ICTCBeneficiaryCounsellingView_.visitDate));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("visitDate"), criteria.getVisitDate()));
             }
             if (criteria.getIsPregnant() != null) {
-                specification = specification.or(buildSpecification(criteria.getIsPregnant(), ICTCBeneficiaryCounsellingView_.isPregnant));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("isPregnant"), criteria.getIsPregnant()));
             }
             if (criteria.getVisitId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getVisitId(), ICTCBeneficiaryCounsellingView_.visitId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("visitId"), criteria.getVisitId()));
             }
             if (criteria.getTestType() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getTestType(), ICTCBeneficiaryCounsellingView_.testType));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("testType"), criteria.getTestType()));
             }
             if (criteria.getResultStatus() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getResultStatus(), ICTCBeneficiaryCounsellingView_.resultStatus));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("resultStatus"), criteria.getResultStatus()));
             }
             if (criteria.getHivStatus() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getHivStatus(), ICTCBeneficiaryCounsellingView_.hivStatus));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("hivStatus"), criteria.getHivStatus()));
             }
             if (criteria.getHivType() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getHivType(), ICTCBeneficiaryCounsellingView_.hivType));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("hivType"), criteria.getHivType()));
             }
             if (criteria.getReportReceivedDate() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getReportReceivedDate(), ICTCBeneficiaryCounsellingView_.reportReceivedDate));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("reportReceivedDate"), criteria.getReportReceivedDate()));
             }
             if (criteria.getReportDeliveryDate() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getReportDeliveryDate(), ICTCBeneficiaryCounsellingView_.reportDeliveryDate));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("reportDeliveryDate"), criteria.getReportDeliveryDate()));
             }
             if (criteria.getBarcode() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getBarcode(), ICTCBeneficiaryCounsellingView_.barcode));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("barcode"), criteria.getBarcode()));
             }
             if (criteria.getBeneficiaryId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getBeneficiaryId(), ICTCBeneficiaryCounsellingView_.beneficiaryId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("beneficiaryId"), criteria.getBeneficiaryId()));
             }
             if (criteria.getInfantMotherFirstName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getInfantMotherFirstName(), ICTCBeneficiaryCounsellingView_.infantMotherFirstName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantMotherFirstName"), criteria.getInfantMotherFirstName()));
             }
             if (criteria.getInfantMotherLastName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getInfantMotherLastName(), ICTCBeneficiaryCounsellingView_.infantMotherLastName));
-            }
-            if (criteria.getBeneficiaryStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBeneficiaryStatus(), ICTCBeneficiaryCounsellingView_.beneficiaryStatus));
-            }
-            if (criteria.getIsConsentDocumented() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsConsentDocumented(), ICTCBeneficiaryCounsellingView_.isConsentDocumented));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantMotherLastName"), criteria.getInfantMotherLastName()));
             }
             if (criteria.getBatchId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getBatchId(), ICTCBeneficiaryCounsellingView_.batchId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("batchId"), criteria.getBatchId()));
             }
             if (criteria.getConsignmentId() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getConsignmentId(), ICTCBeneficiaryCounsellingView_.consignmentId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("consignmentId"), criteria.getConsignmentId()));
             }
             if (criteria.getLabId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getLabId(), ICTCBeneficiaryCounsellingView_.labId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("labId"), criteria.getLabId()));
             }
             if (criteria.getLabName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLabName(), ICTCBeneficiaryCounsellingView_.labName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("labName"), criteria.getLabName()));
             }
             if (criteria.getLabCode() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLabCode(), ICTCBeneficiaryCounsellingView_.labCode));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("labCode"), criteria.getLabCode()));
             }
             if (criteria.getFacilityId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getFacilityId(), ICTCBeneficiaryCounsellingView_.facilityId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("facilityId"), criteria.getFacilityId()));
             }
             if (criteria.getCategoryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCategoryId(), ICTCBeneficiaryCounsellingView_.categoryId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("categoryId"), criteria.getCategoryId()));
             }
             if (criteria.getGenderId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getGenderId(), ICTCBeneficiaryCounsellingView_.genderId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("genderId"), criteria.getGenderId()));
             }
             if (criteria.getIsActive() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsActive(), ICTCBeneficiaryCounsellingView_.isActive));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isActive"), criteria.getIsActive()));
             }
             if (criteria.getIsDeleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsDeleted(), ICTCBeneficiaryCounsellingView_.isDeleted));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isDeleted"), criteria.getIsDeleted()));
             }
             if (criteria.getIsPostTestCounsellingCompleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsPostTestCounsellingCompleted(), ICTCBeneficiaryCounsellingView_.isPostTestCounsellingCompleted));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isPostTestCounsellingCompleted"), criteria.getIsPostTestCounsellingCompleted()));
             }
         }
         return specification;
@@ -321,59 +389,77 @@ public class ICTCBeneficiaryCounsellingViewQueryService {
         Specification<ICTCBeneficiaryCounsellingView> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getPid() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getPid(), ICTCBeneficiaryCounsellingView_.pid));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("pid"), criteria.getPid()));
             }
             if (criteria.getFirstName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getFirstName(), ICTCBeneficiaryCounsellingView_.firstName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("firstName"), criteria.getFirstName()));
             }
             if (criteria.getMiddleName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getMiddleName(), ICTCBeneficiaryCounsellingView_.middleName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("middleName"), criteria.getMiddleName()));
             }
             if (criteria.getLastName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLastName(), ICTCBeneficiaryCounsellingView_.lastName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("lastName"), criteria.getLastName()));
             }
             if (criteria.getMobileNumber() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getMobileNumber(), ICTCBeneficiaryCounsellingView_.mobileNumber));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("mobileNumber"), criteria.getMobileNumber()));
             }
             if (criteria.getInfantCode() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getInfantCode(), ICTCBeneficiaryCounsellingView_.infantCode));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantCode"), criteria.getInfantCode()));
             }
             if (criteria.getInfantMotherFirstName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getInfantMotherFirstName(), ICTCBeneficiaryCounsellingView_.infantMotherFirstName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantMotherFirstName"), criteria.getInfantMotherFirstName()));
             }
             if (criteria.getInfantMotherLastName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getInfantMotherLastName(), ICTCBeneficiaryCounsellingView_.infantMotherLastName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantMotherLastName"), criteria.getInfantMotherLastName()));
             }
             if (criteria.getUid() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getUid(), ICTCBeneficiaryCounsellingView_.uid));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("uid"), criteria.getUid()));
             }
             if (criteria.getBeneficiaryStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBeneficiaryStatus(), ICTCBeneficiaryCounsellingView_.beneficiaryStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("beneficiaryStatus"), criteria.getBeneficiaryStatus()));
             }
             if (criteria.getIsConsentDocumented() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsConsentDocumented(), ICTCBeneficiaryCounsellingView_.isConsentDocumented));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isConsentDocumented"), criteria.getIsConsentDocumented()));
             }
             if (criteria.getFacilityId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getFacilityId(), ICTCBeneficiaryCounsellingView_.facilityId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("facilityId"), criteria.getFacilityId()));
             }
             if (criteria.getCategoryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCategoryId(), ICTCBeneficiaryCounsellingView_.categoryId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("categoryId"), criteria.getCategoryId()));
             }
             if (criteria.getGenderId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getGenderId(), ICTCBeneficiaryCounsellingView_.genderId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("genderId"), criteria.getGenderId()));
             }
             if (criteria.getIsActive() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsActive(), ICTCBeneficiaryCounsellingView_.isActive));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isActive"), criteria.getIsActive()));
             }
             if (criteria.getIsDeleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsDeleted(), ICTCBeneficiaryCounsellingView_.isDeleted));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isDeleted"), criteria.getIsDeleted()));
             }
             if (criteria.getIsPostTestCounsellingCompleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsPostTestCounsellingCompleted(), ICTCBeneficiaryCounsellingView_.isPostTestCounsellingCompleted));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("isPostTestCounsellingCompleted"), criteria.getIsPostTestCounsellingCompleted()));
             }
         }
         return specification;
     }
+
 
     
 }

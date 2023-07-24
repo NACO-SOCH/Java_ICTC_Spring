@@ -49,6 +49,7 @@ public class FictcBeneficiaryCreateDTO {
 	private Long pregnancyTypeId;
 	private Boolean pregnant;
 	private Boolean profileStatus;
+	private Boolean pnc;
 	
 	public String getFirstName() {
 		return firstName;
@@ -202,6 +203,12 @@ public class FictcBeneficiaryCreateDTO {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public Boolean getPnc() {
+		return pnc;
+	}
+	public void setPnc(Boolean pnc) {
+		this.pnc = pnc;
 	}
 	
 

@@ -24,8 +24,6 @@ import gov.naco.soch.repository.ICTCFollowUpRepository;
 import gov.naco.soch.service.dto.ICTCFollowUpCriteria;
 import gov.naco.soch.service.dto.ICTCFollowUpDTO;
 import gov.naco.soch.service.mapper.ICTCFollowUpMapper;
-import io.github.jhipster.service.QueryService;
-
 /**
  * Service for executing complex queries for {@link ICTCFollowUp} entities in the database.
  * The main input is a {@link ICTCFollowUpCriteria} which gets converted to {@link Specification},
@@ -34,7 +32,7 @@ import io.github.jhipster.service.QueryService;
  */
 @Service
 @Transactional(readOnly = true)
-public class ICTCFollowUpQueryService extends QueryService<ICTCFollowUp> {
+public class ICTCFollowUpQueryService{
 
     private final Logger log = LoggerFactory.getLogger(ICTCFollowUpQueryService.class);
 
@@ -91,55 +89,52 @@ public class ICTCFollowUpQueryService extends QueryService<ICTCFollowUp> {
      * @return the matching {@link Specification} of the entity.
      */
     protected Specification<ICTCFollowUp> createSpecification(ICTCFollowUpCriteria criteria) {
-        Specification<ICTCFollowUp> specification = Specification.where(null);
-        if (criteria != null) {
-            if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), ICTCFollowUp_.id));
-            }
-            if (criteria.getFollowUpType() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getFollowUpType(), ICTCFollowUp_.followUpType));
-            }
-            if (criteria.getFollowUpDate() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getFollowUpDate(), ICTCFollowUp_.followUpDate));
-            }
-            if (criteria.getIsCompleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsCompleted(), ICTCFollowUp_.isCompleted));
-            }
-//            if (criteria.getCreatedBy() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getCreatedBy(), ICTCFollowUp_.createdBy));
-//            }
-//            if (criteria.getCreatedTime() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getCreatedTime(), ICTCFollowUp_.createdTime));
-//            }
-//            if (criteria.getModifiedBy() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getModifiedBy(), ICTCFollowUp_.modifiedBy));
-//            }
-//            if (criteria.getModifiedTime() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getModifiedTime(), ICTCFollowUp_.modifiedTime));
-//            }
-            if (criteria.getIsActive() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsActive(), ICTCFollowUp_.isActive));
-            }
-            if (criteria.getIsDeleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsDeleted(), ICTCFollowUp_.isDeleted));
-            }
-            if (criteria.getVisitId() != null) {
-                specification = specification.and(buildSpecification(criteria.getVisitId(),
-                    root -> root.join(ICTCFollowUp_.visit, JoinType.LEFT).get(ICTCVisit_.id)));
-            }
-            if (criteria.getFacilityId() != null) {
-                specification = specification.and(buildSpecification(criteria.getFacilityId(),
-                    root -> root.join(ICTCFollowUp_.facility, JoinType.LEFT).get(Facility_.id)));
-            }
-            if (criteria.getIctcBeneficiaryId() != null) {
-                specification = specification.and(buildSpecification(criteria.getIctcBeneficiaryId(),
-                    root -> root.join(ICTCFollowUp_.ictcBeneficiary, JoinType.LEFT).get(ICTCBeneficiary_.id)));
-            }
-            if (criteria.getTestResultId() != null) {
-                specification = specification.and(buildSpecification(criteria.getTestResultId(),
-                    root -> root.join(ICTCFollowUp_.testResult, JoinType.LEFT).get(ICTCTestResult_.id)));
-            }
-        }
-        return specification;
+    	  Specification<ICTCFollowUp> specification = Specification.where(null);
+    	        if (criteria != null) {
+    	            if (criteria.getId() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.get("id"), criteria.getId()));
+    	            }
+    	            if (criteria.getFollowUpType() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.get("followUpType"), criteria.getFollowUpType()));
+    	            }
+    	            if (criteria.getFollowUpDate() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.get("followUpDate"), criteria.getFollowUpDate()));
+    	            }
+    	            if (criteria.getIsCompleted() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.get("isCompleted"), criteria.getIsCompleted()));
+    	            }
+    	            if (criteria.getIsActive() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.get("isActive"), criteria.getIsActive()));
+    	            }
+    	            if (criteria.getIsDeleted() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.get("isDeleted"), criteria.getIsDeleted()));
+    	            }
+
+    	            if (criteria.getVisitId() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.join("visit").get("id"), criteria.getVisitId()));
+    	            }
+    	            if (criteria.getFacilityId() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.join("facility").get("id"), criteria.getFacilityId()));
+    	            }
+    	            if (criteria.getIctcBeneficiaryId() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.join("ictcBeneficiary").get("id"), criteria.getIctcBeneficiaryId()));
+    	            }
+    	            if (criteria.getTestResultId() != null) {
+    	                specification = specification.and((root, query, builder) ->
+    	                        builder.equal(root.join("testResult").get("id"), criteria.getTestResultId()));
+    	            }
+    	        }
+    	        return specification;
     }
+    
+    
 }

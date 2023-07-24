@@ -12,12 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 // for static metamodels
 import gov.naco.soch.domain.IctcRPQMapping;
-import gov.naco.soch.domain.IctcRPQMapping_;
 import gov.naco.soch.repository.IctcRPQMappingRepository;
 import gov.naco.soch.service.dto.IctcRPQMappingCriteria;
 import gov.naco.soch.service.dto.IctcRPQMappingDTO;
 import gov.naco.soch.service.mapper.IctcRPQMappingMapper;
-import io.github.jhipster.service.QueryService;
 
 /**
  * Service for executing complex queries for {@link IctcRPQMapping} entities in the database.
@@ -27,7 +25,7 @@ import io.github.jhipster.service.QueryService;
  */
 @Service
 @Transactional(readOnly = true)
-public class IctcRPQMappingQueryService extends QueryService<IctcRPQMapping> {
+public class IctcRPQMappingQueryService {
 
     private final Logger log = LoggerFactory.getLogger(IctcRPQMappingQueryService.class);
 
@@ -84,24 +82,30 @@ public class IctcRPQMappingQueryService extends QueryService<IctcRPQMapping> {
      * @return the matching {@link Specification} of the entity.
      */
     protected Specification<IctcRPQMapping> createSpecification(IctcRPQMappingCriteria criteria) {
-        Specification<IctcRPQMapping> specification = Specification.where(null);
-        if (criteria != null) {
-            if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), IctcRPQMapping_.id));
+    	return Specification.<IctcRPQMapping>where((root, query, builder) -> {
+            if (criteria != null) {
+                if (criteria.getId() != null) {
+                    return builder.equal(root.get("id"), criteria.getId());
+                }
+
+                if (criteria.getPid() != null) {
+                    return builder.equal(root.get("pid"), criteria.getPid());
+                }
+
+                if (criteria.getVisitId() != null) {
+                    return builder.equal(root.get("visitId"), criteria.getVisitId());
+                }
+
+                if (criteria.getRpqId() != null) {
+                    return builder.equal(root.get("rpqId"), criteria.getRpqId());
+                }
+
+                if (criteria.getAnswer() != null) {
+                    return builder.equal(root.get("answer"), criteria.getAnswer());
+                }
             }
-            if (criteria.getPid() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getPid(), IctcRPQMapping_.pid));
-            }
-            if (criteria.getVisitId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getVisitId(), IctcRPQMapping_.visitId));
-            }
-            if (criteria.getRpqId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getRpqId(), IctcRPQMapping_.rpqId));
-            }
-            if (criteria.getAnswer() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getAnswer(), IctcRPQMapping_.answer));
-            }
-        }
-        return specification;
+
+            return null;
+        });
     }
 }

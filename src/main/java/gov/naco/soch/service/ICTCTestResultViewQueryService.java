@@ -12,12 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 // for static metamodels
 import gov.naco.soch.domain.ICTCTestResultView;
-import gov.naco.soch.domain.ICTCTestResultView_;
 import gov.naco.soch.repository.ICTCTestResultViewRepository;
 import gov.naco.soch.service.dto.ICTCTestResultViewCriteria;
 import gov.naco.soch.service.dto.ICTCTestResultViewDTO;
-import io.github.jhipster.service.QueryService;
-
 /**
  * Service for executing complex queries for ICTCTestResultView entities in the database.
  * The main input is a {@link ICTCTestResultViewCriteria} which gets converted to {@link Specification},
@@ -26,7 +23,7 @@ import io.github.jhipster.service.QueryService;
  */
 @Service
 @Transactional(readOnly = true)
-public class ICTCTestResultViewQueryService extends QueryService<ICTCTestResultView> {
+public class ICTCTestResultViewQueryService {
 
     private final Logger log = LoggerFactory.getLogger(ICTCTestResultViewQueryService.class);
 
@@ -77,201 +74,228 @@ public class ICTCTestResultViewQueryService extends QueryService<ICTCTestResultV
     /**
      * Function to convert ICTCTestResultViewCriteria to a {@link Specification}
      */
+
     private Specification<ICTCTestResultView> createSpecification(ICTCTestResultViewCriteria criteria) {
         Specification<ICTCTestResultView> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getId() != null) {
-                specification = specification.and(buildSpecification(criteria.getId(), ICTCTestResultView_.id));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
             }
             if (criteria.getUid() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getUid(), ICTCTestResultView_.uid));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("uid"), criteria.getUid()));
             }
             if (criteria.getFirstName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getFirstName(), ICTCTestResultView_.firstName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("firstName"), criteria.getFirstName()));
             }
             if (criteria.getMiddleName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getMiddleName(), ICTCTestResultView_.middleName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("middleName"), criteria.getMiddleName()));
             }
             if (criteria.getLastName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getLastName(), ICTCTestResultView_.lastName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("lastName"), criteria.getLastName()));
             }
             if (criteria.getAge() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getAge(), ICTCTestResultView_.age));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("age"), criteria.getAge()));
             }
-//            if (criteria.getGender() != null) {
-//                specification = specification.and(buildStringSpecification(criteria.getGender(), ICTCTestResultView_.gender));
-//            }
             if (criteria.getInfantCode() != null) {
-            	specification = specification.and(buildStringSpecification(criteria.getInfantCode(), ICTCTestResultView_.infantCode));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("infantCode"), criteria.getInfantCode()));
             }
-//            if (criteria.getSampleCollectionDate() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getSampleCollectionDate(), ICTCTestResultView_.sampleCollectionDate));
-//            }
             if (criteria.getResultStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getResultStatus(), ICTCTestResultView_.resultStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("resultStatus"), criteria.getResultStatus()));
             }
             if (criteria.getHivStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getHivStatus(), ICTCTestResultView_.hivStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("hivStatus"), criteria.getHivStatus()));
             }
             if (criteria.getHivType() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getHivType(), ICTCTestResultView_.hivType));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("hivType"), criteria.getHivType()));
             }
-//            if (criteria.getTestedDate() != null) {
-//                specification = specification.and(buildRangeSpecification(criteria.getTestedDate(), ICTCTestResultView_.testedDate));
-//            }
             if (criteria.getSampleId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getSampleId(), ICTCTestResultView_.sampleId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("sampleId"), criteria.getSampleId()));
             }
             if (criteria.getConsignmentId() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getConsignmentId(), ICTCTestResultView_.consignmentId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("consignmentId"), criteria.getConsignmentId()));
             }
             if (criteria.getBeneficiaryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBeneficiaryId(), ICTCTestResultView_.beneficiaryId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("beneficiaryId"), criteria.getBeneficiaryId()));
             }
             if (criteria.getIctcBeneficiaryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getIctcBeneficiaryId(), ICTCTestResultView_.ictcBeneficiaryId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("ictcBeneficiaryId"), criteria.getIctcBeneficiaryId()));
             }
             if (criteria.getVisitId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getVisitId(), ICTCTestResultView_.visitId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("visitId"), criteria.getVisitId()));
             }
             if (criteria.getDateOfBirth() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getDateOfBirth(), ICTCTestResultView_.dateOfBirth));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("dateOfBirth"), criteria.getDateOfBirth()));
             }
             if (criteria.getSampleCollectionStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getSampleCollectionStatus(), ICTCTestResultView_.sampleCollectionStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("sampleCollectionStatus"), criteria.getSampleCollectionStatus()));
             }
             if (criteria.getBatchStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBatchStatus(), ICTCTestResultView_.batchStatus));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("batchStatus"), criteria.getBatchStatus()));
             }
             if (criteria.getBatchId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getBatchId(), ICTCTestResultView_.batchId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("batchId"), criteria.getBatchId()));
             }
             if (criteria.getLabId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getLabId(), ICTCTestResultView_.labId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("labId"), criteria.getLabId()));
             }
             if (criteria.getLabCode() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getLabCode(), ICTCTestResultView_.labCode));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("labCode"), criteria.getLabCode()));
             }
             if (criteria.getLabName() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getLabName(), ICTCTestResultView_.labName));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("labName"), criteria.getLabName()));
             }
-//            if (criteria.getCategory() != null) {
-//            	specification = specification.and(buildStringSpecification(criteria.getCategory(), ICTCTestResultView_.category));
-//            }
             if (criteria.getTestType() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getTestType(), ICTCTestResultView_.testType));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("testType"), criteria.getTestType()));
             }
             if (criteria.getFacilityId() != null) {
-            	specification = specification.and(buildRangeSpecification(criteria.getFacilityId(), ICTCTestResultView_.facilityId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("facilityId"), criteria.getFacilityId()));
             }
             if (criteria.getCategoryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCategoryId(), ICTCTestResultView_.categoryId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("categoryId"), criteria.getCategoryId()));
             }
             if (criteria.getGenderId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getGenderId(), ICTCTestResultView_.genderId));
+                specification = specification.and((root, query, builder) ->
+                        builder.equal(root.get("genderId"), criteria.getGenderId()));
             }
         }
         return specification;
     }
-    
-    /**
-     * Function to convert ICTCTestResultViewCriteria to a {@link Specification}
-     */
+
     private Specification<ICTCTestResultView> createBasicSpecification(ICTCTestResultViewCriteria criteria) {
         Specification<ICTCTestResultView> specification = Specification.where(null);
         if (criteria != null) {
             if (criteria.getId() != null) {
-                specification = specification.or(buildSpecification(criteria.getId(), ICTCTestResultView_.id));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("id"), criteria.getId()));
             }
             if (criteria.getUid() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getUid(), ICTCTestResultView_.uid));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("uid"), criteria.getUid()));
             }
             if (criteria.getFirstName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getFirstName(), ICTCTestResultView_.firstName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("firstName"), criteria.getFirstName()));
             }
             if (criteria.getMiddleName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getMiddleName(), ICTCTestResultView_.middleName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("middleName"), criteria.getMiddleName()));
             }
             if (criteria.getLastName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLastName(), ICTCTestResultView_.lastName));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("lastName"), criteria.getLastName()));
             }
             if (criteria.getAge() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getAge(), ICTCTestResultView_.age));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("age"), criteria.getAge()));
             }
-//            if (criteria.getGender() != null) {
-//                specification = specification.or(buildStringSpecification(criteria.getGender(), ICTCTestResultView_.gender));
-//            }
             if (criteria.getInfantCode() != null) {
-            	specification = specification.or(buildStringSpecification(criteria.getInfantCode(), ICTCTestResultView_.infantCode));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("infantCode"), criteria.getInfantCode()));
             }
-//            if (criteria.getSampleCollectionDate() != null) {
-//                specification = specification.or(buildRangeSpecification(criteria.getSampleCollectionDate(), ICTCTestResultView_.sampleCollectionDate));
-//            }
             if (criteria.getResultStatus() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getResultStatus(), ICTCTestResultView_.resultStatus));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("resultStatus"), criteria.getResultStatus()));
             }
             if (criteria.getHivStatus() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getHivStatus(), ICTCTestResultView_.hivStatus));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("hivStatus"), criteria.getHivStatus()));
             }
             if (criteria.getHivType() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getHivType(), ICTCTestResultView_.hivType));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("hivType"), criteria.getHivType()));
             }
-//            if (criteria.getTestedDate() != null) {
-//                specification = specification.or(buildRangeSpecification(criteria.getTestedDate(), ICTCTestResultView_.testedDate));
-//            }
             if (criteria.getSampleId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getSampleId(), ICTCTestResultView_.sampleId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("sampleId"), criteria.getSampleId()));
             }
             if (criteria.getConsignmentId() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getConsignmentId(), ICTCTestResultView_.consignmentId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("consignmentId"), criteria.getConsignmentId()));
             }
             if (criteria.getBeneficiaryId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getBeneficiaryId(), ICTCTestResultView_.beneficiaryId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("beneficiaryId"), criteria.getBeneficiaryId()));
             }
             if (criteria.getIctcBeneficiaryId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getIctcBeneficiaryId(), ICTCTestResultView_.ictcBeneficiaryId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("ictcBeneficiaryId"), criteria.getIctcBeneficiaryId()));
             }
             if (criteria.getVisitId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getVisitId(), ICTCTestResultView_.visitId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("visitId"), criteria.getVisitId()));
             }
             if (criteria.getDateOfBirth() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getDateOfBirth(), ICTCTestResultView_.dateOfBirth));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("dateOfBirth"), criteria.getDateOfBirth()));
+            }
+            if (criteria.getSampleCollectionStatus() != null) {
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("sampleCollectionStatus"), criteria.getSampleCollectionStatus()));
             }
             if (criteria.getBatchStatus() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getBatchStatus(), ICTCTestResultView_.batchStatus));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("batchStatus"), criteria.getBatchStatus()));
             }
             if (criteria.getBatchId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getBatchId(), ICTCTestResultView_.batchId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("batchId"), criteria.getBatchId()));
             }
             if (criteria.getLabId() != null) {
-                specification = specification.or(buildRangeSpecification(criteria.getLabId(), ICTCTestResultView_.labId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("labId"), criteria.getLabId()));
             }
             if (criteria.getLabCode() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLabCode(), ICTCTestResultView_.labCode));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("labCode"), criteria.getLabCode()));
             }
             if (criteria.getLabName() != null) {
-                specification = specification.or(buildStringSpecification(criteria.getLabName(), ICTCTestResultView_.labName));
-            }
-//            if (criteria.getCategory() != null) {
-//            	specification = specification.and(buildStringSpecification(criteria.getCategory(), ICTCTestResultView_.category));
-//            }
-            if (criteria.getSampleCollectionStatus() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getSampleCollectionStatus(), ICTCTestResultView_.sampleCollectionStatus));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("labName"), criteria.getLabName()));
             }
             if (criteria.getTestType() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getTestType(), ICTCTestResultView_.testType));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("testType"), criteria.getTestType()));
             }
             if (criteria.getFacilityId() != null) {
-            	specification = specification.and(buildRangeSpecification(criteria.getFacilityId(), ICTCTestResultView_.facilityId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("facilityId"), criteria.getFacilityId()));
             }
             if (criteria.getCategoryId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCategoryId(), ICTCTestResultView_.categoryId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("categoryId"), criteria.getCategoryId()));
             }
             if (criteria.getGenderId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getGenderId(), ICTCTestResultView_.genderId));
+                specification = specification.or((root, query, builder) ->
+                        builder.equal(root.get("genderId"), criteria.getGenderId()));
             }
         }
         return specification;
     }
+
 
 }

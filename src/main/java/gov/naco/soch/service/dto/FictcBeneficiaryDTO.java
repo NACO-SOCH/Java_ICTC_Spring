@@ -28,6 +28,8 @@ public class FictcBeneficiaryDTO extends Auditable<Long> implements Serializable
     private Long facilityId;
     private Boolean profileStatus;
 
+    private Boolean pnc;
+
     public Long getId() {
         return id;
     }
@@ -133,5 +135,13 @@ public class FictcBeneficiaryDTO extends Auditable<Long> implements Serializable
 
 	public void setProfileStatus(Boolean profileStatus) {
 		this.profileStatus = profileStatus;
+	}
+
+	public Boolean getPnc() {
+		return pnc;
+	}
+
+	public void setPnc(Boolean pnc) {
+		this.pnc = pnc;
 	}
 }

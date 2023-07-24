@@ -2,7 +2,6 @@ package gov.naco.soch.service;
 
 import java.util.List;
 
-import javax.persistence.criteria.JoinType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import gov.naco.soch.domain.Transfers;
-import gov.naco.soch.domain.*; // for static metamodels
 import gov.naco.soch.repository.TransfersRepository;
 import gov.naco.soch.service.dto.TransfersCriteria;
 import gov.naco.soch.service.dto.TransfersDTO;
@@ -83,82 +81,103 @@ public class TransfersQueryService {
      * @param criteria The object which holds all the filters, which the entities should match.
      * @return the matching {@link Specification} of the entity.
      */
-    protected Specification<Transfers> createSpecification(TransfersCriteria criteria) {
-        Specification<Transfers> specification = Specification.where(null);
-        if (criteria != null) {
-            if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), Transfers_.id));
-            }
-            if (criteria.getSourceFacilityType() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getSourceFacilityType(), Transfers_.sourceFacilityType));
-            }
-            if (criteria.getTransferStatus() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getTransferStatus(), Transfers_.transferStatus));
-            }
-            if (criteria.getHivStatus() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getHivStatus(), Transfers_.hivStatus));
-            }
-            if (criteria.getCategory() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getCategory(), Transfers_.category));
-            }
-            if (criteria.getRemarks() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getRemarks(), Transfers_.remarks));
-            }
-            if (criteria.getInitiationDate() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getInitiationDate(), Transfers_.initiationDate));
-            }
-            if (criteria.getDestinationFacilityType() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getDestinationFacilityType(), Transfers_.destinationFacilityType));
-            }
-            if (criteria.getDsrcCode() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getDsrcCode(), Transfers_.dsrcCode));
-            }
-            if (criteria.getTiCode() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getTiCode(), Transfers_.tiCode));
-            }
-            if (criteria.getArtCode() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getArtCode(), Transfers_.artCode));
-            }
-            if (criteria.getOstCode() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getOstCode(), Transfers_.ostCode));
-            }
-            if (criteria.getPidCode() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getPidCode(), Transfers_.pidCode));
-            }
-            if (criteria.getReportingDate() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getReportingDate(), Transfers_.reportingDate));
-            }
-            if (criteria.getCreatedBy() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCreatedBy(), Transfers_.createdBy));
-            }
-            if (criteria.getCreatedTime() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getCreatedTime(), Transfers_.createdTime));
-            }
-            if (criteria.getModifiedBy() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getModifiedBy(), Transfers_.modifiedBy));
-            }
-            if (criteria.getModifiedTime() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getModifiedTime(), Transfers_.modifiedTime));
-            }
-            if (criteria.getIsActive() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsActive(), Transfers_.isActive));
-            }
-            if (criteria.getIsDeleted() != null) {
-                specification = specification.and(buildSpecification(criteria.getIsDeleted(), Transfers_.isDeleted));
-            }
-            if (criteria.getBeneficiaryId() != null) {
-                specification = specification.and(buildSpecification(criteria.getBeneficiaryId(),
-                    root -> root.join(Transfers_.beneficiary, JoinType.LEFT).get(Beneficiary_.id)));
-            }
-            if (criteria.getSourceFacilityId() != null) {
-                specification = specification.and(buildSpecification(criteria.getSourceFacilityId(),
-                    root -> root.join(Transfers_.sourceFacility, JoinType.LEFT).get(Facility_.id)));
-            }
-            if (criteria.getDestinationFacilityId() != null) {
-                specification = specification.and(buildSpecification(criteria.getDestinationFacilityId(),
-                    root -> root.join(Transfers_.destinationFacility, JoinType.LEFT).get(Facility_.id)));
-            }
+
+protected Specification<Transfers> createSpecification(TransfersCriteria criteria) {
+    Specification<Transfers> specification = Specification.where(null);
+    if (criteria != null) {
+        if (criteria.getId() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("id"), criteria.getId()));
         }
-        return specification;
+        if (criteria.getSourceFacilityType() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("sourceFacilityType"), criteria.getSourceFacilityType()));
+        }
+        if (criteria.getTransferStatus() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("transferStatus"), criteria.getTransferStatus()));
+        }
+        if (criteria.getHivStatus() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("hivStatus"), criteria.getHivStatus()));
+        }
+        if (criteria.getCategory() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("category"), criteria.getCategory()));
+        }
+        if (criteria.getRemarks() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("remarks"), criteria.getRemarks()));
+        }
+        if (criteria.getInitiationDate() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("initiationDate"), criteria.getInitiationDate()));
+        }
+        if (criteria.getDestinationFacilityType() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("destinationFacilityType"), criteria.getDestinationFacilityType()));
+        }
+        if (criteria.getDsrcCode() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("dsrcCode"), criteria.getDsrcCode()));
+        }
+        if (criteria.getTiCode() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("tiCode"), criteria.getTiCode()));
+        }
+        if (criteria.getArtCode() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("artCode"), criteria.getArtCode()));
+        }
+        if (criteria.getOstCode() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("ostCode"), criteria.getOstCode()));
+        }
+        if (criteria.getPidCode() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("pidCode"), criteria.getPidCode()));
+        }
+        if (criteria.getReportingDate() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("reportingDate"), criteria.getReportingDate()));
+        }
+        if (criteria.getCreatedBy() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("createdBy"), criteria.getCreatedBy()));
+        }
+        if (criteria.getCreatedTime() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("createdTime"), criteria.getCreatedTime()));
+        }
+        if (criteria.getModifiedBy() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("modifiedBy"), criteria.getModifiedBy()));
+        }
+        if (criteria.getModifiedTime() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("modifiedTime"), criteria.getModifiedTime()));
+        }
+        if (criteria.getIsActive() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("isActive"), criteria.getIsActive()));
+        }
+        if (criteria.getIsDeleted() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("isDeleted"), criteria.getIsDeleted()));
+        }
+        if (criteria.getBeneficiaryId() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.join("beneficiary").get("id"), criteria.getBeneficiaryId()));
+        }
+        if (criteria.getSourceFacilityId() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.join("sourceFacility").get("id"), criteria.getSourceFacilityId()));
+        }
+        if (criteria.getDestinationFacilityId() != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.join("destinationFacility").get("id"), criteria.getDestinationFacilityId()));
+        }
     }
+    return specification;
+}
 }
